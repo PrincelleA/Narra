@@ -1,12 +1,22 @@
+/**
+ * HOME PAGE
+ * This page serves as the main landing page of the application. It displays the feed of posts and allows users to sign in and create new posts.
+ */
+
 import { type NextPage } from "next";
 import { api } from "~/utils/api";
-import { SignInButton, useUser } from "@clerk/nextjs";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { useState } from "react";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { toast } from "react-hot-toast";
 import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
+
+/**
+ * CREATE POST WIZARD COMPONENT
+ * This component renders the create post wizard, which allows users to create new posts.
+ */
 
 const CreatePostWizard = () => {
   const { user } = useUser();
@@ -15,6 +25,7 @@ const CreatePostWizard = () => {
 
   const ctx = api.useContext();
 
+  // Create a new post using a trpc mutation
   const { mutate, isLoading: isPosting } = api.posts.create.useMutation({
     onSuccess: () => {
       setInput("");
@@ -34,13 +45,24 @@ const CreatePostWizard = () => {
 
   return (
     <div className="flex w-full gap-3">
-      <Image
-        src={user.profileImageUrl}
+      {/* Display the user's profile avatar */}
+      <UserButton
+        appearance={{
+          elements: {
+            avatarBox: "h-14 w-14 rounded-full overflow-hidden",
+          },
+        }}
+      />
+
+      {/* <Image
+        src={user.imageUrl}
         alt="Profile Image"
         className="h-14 w-14 rounded-full"
         width={56}
         height={56}
-      />
+      /> */}
+
+      {/* Input field to enter post content */}
       <input
         type="text"
         placeholder="Type some emojis!"
@@ -57,10 +79,13 @@ const CreatePostWizard = () => {
         }}
         disabled={isPosting}
       />
+
+      {/* Submit button */}
       {input !== "" && !isPosting && (
         <button onClick={() => mutate({ content: input })}>Post</button>
       )}
 
+      {/* Display a loading spinner while posting */}
       {isPosting && (
         <div className="flex items-center justify-center">
           <LoadingSpinner size={20} />
@@ -70,13 +95,22 @@ const CreatePostWizard = () => {
   );
 };
 
+/**
+ * FEED COMPONENT
+ * This component renders the feed of posts.
+ */
+
 const Feed = () => {
+  // Fetch all posts using a trpc query
   const { data, isLoading: postsLoading } = api.posts.getAll.useQuery();
 
+  // Return a loading page if posts are loading
   if (postsLoading) return <LoadingPage />;
 
+  // Return an error message if posts failed to load
   if (!data) return <div>Something went wrong</div>;
 
+  // Return a list of posts
   return (
     <div className="flex flex-col">
       {data.map((fullPost) => (
@@ -85,6 +119,11 @@ const Feed = () => {
     </div>
   );
 };
+
+/**
+ * HOME PAGE COMPONENT
+ * This component renders the home page.
+ */
 
 const Home: NextPage = () => {
   const { isLoaded: userLoaded, isSignedIn } = useUser();
@@ -99,14 +138,17 @@ const Home: NextPage = () => {
     <>
       <PageLayout>
         <div className="border-b border-slate-400 p-4">
+          {/* Display the sign in button if the user isn't signed in */}
           {!isSignedIn && (
             <div className="flex justify-center">
               <SignInButton />
             </div>
           )}
+          {/* Display the create post wizard if the user is signed in */}
           {!!isSignedIn && <CreatePostWizard />}
         </div>
 
+        {/* Display the feed */}
         <Feed />
       </PageLayout>
     </>

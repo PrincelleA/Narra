@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* BODY STYLING */
 body {
   @apply bg-black text-slate-100;
 
   overscroll-behavior: none;
 }
 
+/* UTILITY STYLING */
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
