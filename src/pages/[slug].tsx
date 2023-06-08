@@ -11,6 +11,7 @@ import { PostView } from "~/components/postview";
 import { PageLayout } from "~/components/layout";
 import { LoadingPage } from "~/components/loading";
 import { generateSSGHelper } from "~/server/helpers/ssgHelper";
+import { UserButton } from "@clerk/nextjs";
 
 /**
  * PROFILE FEED COMPONENT

@@ -167,4 +167,64 @@ export const postsRouter = createTRPCRouter({
 
       return post;
     }),
+
+  // /**
+  //  * DELETE POST
+  //  * @param {string} id - The ID of the post.
+  //  * @returns {Promise<Post>} A promise that resolves to the deleted post.
+  //  * @throws {TRPCError} Throws an error if the user is not authorized to delete the post.
+  //  */
+
+  // delete: privateProcedure
+  //   .input(z.object({ id: z.string() }))
+  //   .mutation(async ({ ctx, input }) => {
+  //     const post = await ctx.prisma.post.findUnique({
+  //       where: { id: input.id },
+  //     });
+
+  //     // If the post doesn't exist, throw an error
+  //     if (!post) throw new TRPCError({ code: "NOT_FOUND" });
+
+  //     // If the user is not authorized to delete the post, throw an error
+  //     if (post.authorId !== ctx.userId)
+  //       throw new TRPCError({ code: "UNAUTHORIZED" });
+
+  //     // Delete the post
+  //     await ctx.prisma.post.delete({ where: { id: input.id } });
+
+  //     return post;
+  //   }),
+
+  // /**
+  //  * LIKE POST
+  //  * @param {string} id - The ID of the post.
+  //  * @returns {Promise<Post>} A promise that resolves to the liked post.
+  //  */
+
+  // like: privateProcedure
+  //   .input(z.object({ id: z.string() }))
+  //   .mutation(async ({ ctx, input }) => {
+  //     const post = await ctx.prisma.post.findUnique({
+  //       where: { id: input.id },
+  //     });
+
+  //     // If the post doesn't exist, throw an error
+  //     if (!post) throw new TRPCError({ code: "NOT_FOUND" });
+
+  //     // If the user has already liked the post, throw an error
+  //     if (post.likes.includes(ctx.userId))
+  //       throw new TRPCError({ code: "UNAUTHORIZED" });
+
+  //     // Like the post
+  //     await ctx.prisma.post.update({
+  //       where: { id: input.id },
+  //       data: {
+  //         likes: {
+  //           push: ctx.userId,
+  //         },
+  //       },
+  //     });
+
+  //   return post;
+  // }
 });
