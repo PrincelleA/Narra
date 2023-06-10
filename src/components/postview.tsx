@@ -17,7 +17,10 @@ export const PostView = (props: PostWithUser) => {
   const { post, author } = props;
 
   return (
-    <div key={post.id} className="flex gap-3 border-b border-slate-400 p-4">
+    <div
+      key={post.id}
+      className="mt-4 flex gap-3 rounded-lg border border-slate-400 bg-slate-800/5 p-4 shadow-[inset_10px_-50px_94px_0_rgb(203,213,225,0.05)]  backdrop-blur"
+    >
       {/* Author's profile image, username, and timestamp */}
       <Image
         src={author.imageUrl}
@@ -38,7 +41,7 @@ export const PostView = (props: PostWithUser) => {
         </div>
 
         {/* Post content */}
-        <span className="text-2xl">{post.content}</span>
+        <span className="whitespace-pre-wrap">{post.content}</span>
       </div>
     </div>
   );
