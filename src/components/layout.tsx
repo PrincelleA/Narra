@@ -12,7 +12,7 @@ export const PageLayout = (props: PropsWithChildren) => {
   return (
     <main className="flex h-screen flex-col items-center justify-center">
       {/* Header */}
-      <div className="gap:4 flex w-full items-center justify-between border-y border-slate-400 bg-slate-800/5 p-5 shadow-[inset_10px_-50px_94px_0_rgb(203,213,225,0.05)] backdrop-blur">
+      <div className="gap:4 flex w-full items-center justify-between border-y border-slate-400 bg-slate-800/5 p-5 shadow-[inset_10px_-50px_94px_0_rgb(203,213,225,0.05)] backdrop-blur lg:px-12">
         {/* Logo */}
         <Link href="/">
           {/* <Image
