@@ -34,7 +34,7 @@ export const PageLayout = (props: PropsWithChildren) => {
         <UserButton
           appearance={{
             elements: {
-              avatarBox: "h-14 w-14 rounded-full overflow-hidden",
+              avatarBox: "h-10 w-10 rounded-full overflow-hidden",
             },
           }}
         />
