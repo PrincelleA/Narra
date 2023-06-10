@@ -66,7 +66,7 @@ const CreatePostWizard = () => {
       <input
         type="text"
         placeholder="Type some emojis!"
-        className="grow bg-transparent outline-none"
+        className="grow bg-transparent outline-none "
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => {
@@ -82,7 +82,12 @@ const CreatePostWizard = () => {
 
       {/* Submit button */}
       {input !== "" && !isPosting && (
-        <button onClick={() => mutate({ content: input })}>Post</button>
+        <button
+          className="text-slate-300 hover:text-slate-200"
+          onClick={() => mutate({ content: input })}
+        >
+          Post
+        </button>
       )}
 
       {/* Display a loading spinner while posting */}
