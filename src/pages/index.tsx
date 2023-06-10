@@ -5,13 +5,21 @@
 
 import { type NextPage } from "next";
 import { api } from "~/utils/api";
-import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { toast } from "react-hot-toast";
 import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
+import { SignUpPage } from "./sign-in-loser/[[...index]]";
 
 /**
  * CREATE POST WIZARD COMPONENT
@@ -152,9 +160,18 @@ const Home: NextPage = () => {
         {/* Display the create post wizard if the user is signed in */}
         {/* {!!isSignedIn && <CreatePostWizard />} */}
         {/* </div> */}
+        <SignedOut>
+          {/* <SignUpPage /> */}
+
+          <Link className="" href={"/sign-in"}>
+            Sign In
+          </Link>
+        </SignedOut>
 
         {/* Display the feed */}
-        <Feed />
+        <SignedIn>
+          <Feed />
+        </SignedIn>
       </PageLayout>
     </>
   );

@@ -9,7 +9,6 @@ import "~/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "react-hot-toast";
 import Head from "next/head";
-
 /**
  * APP COMPONENT
  */
