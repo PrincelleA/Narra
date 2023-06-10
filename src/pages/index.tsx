@@ -142,16 +142,16 @@ const Home: NextPage = () => {
   return (
     <>
       <PageLayout>
-        <div className="border-b border-slate-400 p-4">
-          {/* Display the sign in button if the user isn't signed in */}
-          {!isSignedIn && (
+        {/* <div className="border-b border-slate-400 p-4"> */}
+        {/* Display the sign in button if the user isn't signed in */}
+        {/* {!isSignedIn && (
             <div className="flex justify-center">
               <SignInButton />
             </div>
-          )}
-          {/* Display the create post wizard if the user is signed in */}
-          {!!isSignedIn && <CreatePostWizard />}
-        </div>
+          )} */}
+        {/* Display the create post wizard if the user is signed in */}
+        {/* {!!isSignedIn && <CreatePostWizard />} */}
+        {/* </div> */}
 
         {/* Display the feed */}
         <Feed />
