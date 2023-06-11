@@ -24,11 +24,6 @@ export const HeaderView = () => {
         <h1 className=" p-0 text-2xl font-bold text-slate-300">Narra</h1>
       </Link>
 
-      {/* Navigation */}
-      <button className="w-screen text-slate-300 hover:text-slate-200">
-        New Narrative +
-      </button>
-
       {/* Display the user's profile avatar */}
       <UserButton
         appearance={{

@@ -61,20 +61,37 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
         <title>{data.username}</title>
       </Head>
       <PageLayout>
-        <div className="relative h-48 bg-slate-600">
-          <Image
-            src={data.imageUrl}
-            alt={`${data.username ?? ""}'s profile pic`}
-            width={128}
-            height={128}
-            className="absolute bottom-0 left-0 -mb-[64px] ml-4 rounded-full border-4 border-black bg-black"
-          />
+        {/* User's profile information */}
+        <div className="mt-5 rounded-lg border border-slate-400 bg-slate-800/5 p-4 shadow-[inset_10px_-50px_94px_0_rgb(203,213,225,0.05)]  backdrop-blur">
+          <div
+            className="relative h-40 "
+            style={{
+              backgroundImage: `url(${data.imageUrl})`,
+              backgroundSize: "cover",
+            }}
+          >
+            <div className="h-40 bg-slate-950 bg-opacity-60"></div>
+
+            {/* User's profile image */}
+            <Image
+              src={data.imageUrl}
+              alt={`${data.username ?? ""}'s profile pic`}
+              width={128}
+              height={128}
+              className="absolute bottom-0 left-0 -mb-[64px] ml-4 rounded-full border-4 border-slate-300 bg-slate-300"
+            />
+          </div>
+
+          {/* User's details */}
+          <div className="h-[64px]"></div>
+          <div className="p-4 text-2xl font-bold">{`@${
+            data.username ?? ""
+          }`}</div>
+          <div className="w-full p-4 text-lg">
+            {`${data.firstName} 
+          ${data.lastName}`}
+          </div>
         </div>
-        <div className="h-[64px]"></div>
-        <div className="p-4 text-2xl font-bold">{`@${
-          data.username ?? ""
-        }`}</div>
-        <div className="w-full border-b border-slate-400"></div>
 
         {/* *Render the profile feed* */}
         <ProfileFeed userId={data.id} />
