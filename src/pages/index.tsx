@@ -19,7 +19,7 @@ import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { toast } from "react-hot-toast";
 import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
-import { SignUpPage } from "./sign-in-loser/[[...index]]";
+import { SignUpPage } from "../components/sign-in";
 
 /**
  * CREATE POST WIZARD COMPONENT
@@ -150,28 +150,19 @@ const Home: NextPage = () => {
   return (
     <>
       <PageLayout>
-        {/* <div className="border-b border-slate-400 p-4"> */}
-        {/* Display the sign in button if the user isn't signed in */}
-        {/* {!isSignedIn && (
+        <div className="border-b border-slate-400 p-4">
+          {/* Display the sign in button if the user isn't signed in */}
+          {!isSignedIn && (
             <div className="flex justify-center">
               <SignInButton />
             </div>
-          )} */}
-        {/* Display the create post wizard if the user is signed in */}
-        {/* {!!isSignedIn && <CreatePostWizard />} */}
-        {/* </div> */}
-        <SignedOut>
-          {/* <SignUpPage /> */}
-
-          <Link className="" href={"/sign-in"}>
-            Sign In
-          </Link>
-        </SignedOut>
+          )}
+          {/* Display the create post wizard if the user is signed in */}
+          {!!isSignedIn && <CreatePostWizard />}
+        </div>
 
         {/* Display the feed */}
-        <SignedIn>
-          <Feed />
-        </SignedIn>
+        <Feed />
       </PageLayout>
     </>
   );

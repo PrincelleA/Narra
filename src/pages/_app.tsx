@@ -6,9 +6,11 @@
 import { type AppType } from "next/app";
 import { api } from "~/utils/api";
 import "~/styles/globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, SignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 import { Toaster } from "react-hot-toast";
 import Head from "next/head";
+import { SignUpPage } from "~/components/sign-in";
+import Page from "./sign-in/[[...index]]";
 /**
  * APP COMPONENT
  */
@@ -42,8 +44,14 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       </Head>
       <Toaster position="bottom-center" />
 
-      {/* Render the component and pass the pageProps to it */}
-      <Component {...pageProps} />
+      <SignedIn>
+        {/* Render the component and pass the pageProps to it */}
+        <Component {...pageProps} />
+      </SignedIn>
+
+      <SignedOut>
+        <Page />
+      </SignedOut>
     </ClerkProvider>
   );
 };
