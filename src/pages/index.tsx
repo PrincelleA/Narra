@@ -62,14 +62,6 @@ const CreatePostWizard = () => {
         }}
       />
 
-      {/* <Image
-        src={user.imageUrl}
-        alt="Profile Image"
-        className="h-14 w-14 rounded-full"
-        width={56}
-        height={56}
-      /> */}
-
       {/* Input field to enter post content */}
       <input
         type="text"
