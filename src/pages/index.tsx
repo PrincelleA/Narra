@@ -19,7 +19,6 @@ import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { toast } from "react-hot-toast";
 import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
-import { SignUpPage } from "../components/sign-in";
 
 /**
  * CREATE POST WIZARD COMPONENT

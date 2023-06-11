@@ -9,8 +9,7 @@ import "~/styles/globals.css";
 import { ClerkProvider, SignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 import { Toaster } from "react-hot-toast";
 import Head from "next/head";
-import { SignUpPage } from "~/components/sign-in";
-import Page from "./sign-in/[[...index]]";
+
 /**
  * APP COMPONENT
  */
@@ -48,10 +47,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         {/* Render the component and pass the pageProps to it */}
         <Component {...pageProps} />
       </SignedIn>
-
-      <SignedOut>
-        <Page />
-      </SignedOut>
     </ClerkProvider>
   );
 };
